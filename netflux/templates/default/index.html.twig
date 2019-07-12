@@ -1,0 +1,71 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    <h1 class="">Bienvenu sur Netflux</h1>
+
+    <section class="content">
+      <h2>Nos Séries</h2>
+      {% if series is empty %}
+          <p>Il n'y a aucune série</p>
+      {% else %}
+        {% if series|length == 1 %}
+          <p>Il y a une série</p>
+        {% endif %}
+
+        <p>Il y a {{series|length}} séries</p>
+      {% endif %}
+
+      <a href="/serie" title="Serie">Découvrir toutes les séries</a>
+    </section>
+
+    <section>
+      <h2 class="content">Nos Catégories</h2>
+      {% if categories is empty %}
+          <p class="content">Il n'y a actuellement aucune catégorie sur notre site</p>
+      {% else %}
+        <div class="content">
+          {% if categories|length == 1 %}
+            <p>Il y a actuellement une catégorie sur notre site</p>
+          {% else %}
+            <p>Il y a actuellement {{categories|length}} catégories sur notre site</p>
+          {% endif %}
+        </div>
+
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Nom</th>
+                    <th>Nombre de séries</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for categorie in categories %}
+                <tr>
+                    <td>
+                        <a href="{{ path('categorie', {'id': categorie.id}) }}" title="{{ categorie.name }}">
+                            {{ categorie.name }}
+                        </a>
+                    </td>
+                    <td>IDK</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+      {% endif %}
+
+      <h3 class="content">Ajouter une catégorie</h3>
+
+      <section class="content">
+        <div class="form_categorie">
+          {{ form_start(add_categorie) }}
+              {{ form_row(add_categorie.name) }}
+              {{ form_row(add_categorie.save) }}
+          {{ form_end(add_categorie) }}
+        </div>
+      </section>
+
+    </section>
+
+
+{% endblock %}

@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+	<h1>{{categorie.name}}</h1>
+
+	<div class="content">
+		<h2>Modifier la catégorie</h2>
+		{{ form(edit_form) }}
+	</div>
+
+	<a class="delete" href="{{ path('categorieDelete', {'id': categorie.id}) }}" title="Delete Catégorie">Supprimer cette catégorie</a>
+
+
+{% endblock %}

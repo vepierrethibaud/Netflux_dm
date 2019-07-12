@@ -1,0 +1,60 @@
+/* assets/css/app.css */
+
+.content{
+  width: 90%;
+  margin: 0 auto;
+}
+
+section, table{
+  margin-top: 50px;
+}
+
+h1{
+  width: 90%;
+  margin: 40px auto;
+}
+
+nav{
+  height: 80px;
+}
+
+form, button{
+  margin-top: 20px;
+}
+
+label{
+  margin-right: 10px;
+}
+
+.img_serie{
+  margin: 40px auto;
+}
+
+.synopsis{
+  width: 60%;
+  margin-top: 30px;
+}
+
+.serie{
+  display: flex;
+  width: 90%;
+  margin: 0 auto;
+  flex-direction: row;
+}
+
+.flex-line{
+  display: flex;
+  flex-direction: row;
+}
+
+.flex-p{
+  margin-right: 100px;
+}
+
+.modif{
+  margin: 50px auto 100px;
+}
+
+.delete{
+  margin: 40px 5%;
+}

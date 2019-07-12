@@ -27,12 +27,12 @@ class Serie
     private $datestart;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="string", length=255)
      */
     private $dateend;
 
     /**
-     * @ORM\Column(type="integer")
+    * @ORM\Column(type="integer")
      */
     private $nbsaison;
 
@@ -42,13 +42,13 @@ class Serie
     private $affiche;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\categorie")
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\ManyToOne(targetEntity="App\Entity\Categorie")
+     * @ORM\JoinColumn(name="categorie_id", nullable=true, onDelete="SET NULL")
      */
     private $categorie;
 
     /**
-     * @ORM\Column(type="string", length=500)
+     * @ORM\Column(type="string", length=1500)
      */
     private $synopsis;
 
@@ -81,12 +81,12 @@ class Serie
         return $this;
     }
 
-    public function getDateend(): ?int
+    public function getDateend(): ?string
     {
         return $this->dateend;
     }
 
-    public function setDateend(int $dateend): self
+    public function setDateend(string $dateend): self
     {
         $this->dateend = $dateend;
 

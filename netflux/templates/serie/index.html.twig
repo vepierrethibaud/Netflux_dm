@@ -1,0 +1,69 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Series | Netflux{% endblock %}
+
+{% block body %}
+
+    <h1>Toutes les séries</h1>
+
+    <section>
+      {% if series is empty %}
+          <p>Aucune série n'a été ajoutée</p>
+      {% else %}
+
+          <table class="table table-striped">
+              <thead>
+                  <tr>
+                      <th>Nom</th>
+                      <th>Affiche</th>
+                      <th>Début</th>
+                      <th>Fin</th>
+                      <th>Nb saison</th>
+                      <th>Synopsis</th>
+                      <th>Catégorie</th>
+                  </tr>
+              </thead>
+              <tbody>
+                  {% for serie in series %}
+                  <tr>
+                      <td>
+                          <a href="{{ path('serie', {'id': serie.id}) }}" title="{{ serie.nom }}">
+                              {{ serie.nom }}
+                          </a>
+                      </td>
+                      <td>
+                          {% if serie.affiche is not empty %}
+                              <img src="{{ asset('/uploads/'~ serie.affiche) }}" alt="Affiche {{ serie.nom }}" class="img-thumbnail">
+                          {% endif %}
+                      </td>
+                      <td>{{ serie.datestart }}</td>
+                      <td>{{ serie.dateend }}</td>
+                      <td>{{ serie.nbsaison }}</td>
+                      <td>{{ serie.synopsis }}</td>
+                      <td>{{ serie.categorie }}</td>
+                  </tr>
+                  {% endfor %}
+              </tbody>
+          </table>
+
+      {% endif %}
+
+      <section class="content">
+        <h2>Ajouter une série</h2>
+
+        {{ form_start(add_serie) }}
+            {{ form_row(add_serie.nom) }}
+            {{ form_row(add_serie.datestart) }}
+            {{ form_row(add_serie.dateend) }}
+            {{ form_row(add_serie.nbsaison) }}
+            {{ form_row(add_serie.synopsis) }}
+            {{ form_row(add_serie.affiche) }}
+            {{ form_row(add_serie.categorie) }}
+            {{ form_row(add_serie.save) }}
+        {{ form_end(add_serie) }}
+      </section>
+
+    </section>
+
+
+{% endblock %}

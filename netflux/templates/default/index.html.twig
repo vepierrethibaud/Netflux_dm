@@ -7,13 +7,13 @@
     <section class="content">
       <h2>Nos Séries</h2>
       {% if series is empty %}
-          <p>Il n'y a aucune série</p>
+          <p>Il n'y a actuellement aucune série sur notre site.</p>
       {% else %}
         {% if series|length == 1 %}
-          <p>Il y a une série</p>
+          <p>Il n'y a actuellement une série sur notre site.</p>
         {% endif %}
 
-        <p>Il y a {{series|length}} séries</p>
+        <p>Il y a actuellement {{series|length}} séries sur notre site.</p>
       {% endif %}
 
       <a href="/serie" title="Serie">Découvrir toutes les séries</a>

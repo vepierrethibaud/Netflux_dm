@@ -40,16 +40,26 @@
                 </tr>
             </thead>
             <tbody>
-                {% for categorie in categories %}
-                <tr>
-                    <td>
-                        <a href="{{ path('categorie', {'id': categorie.id}) }}" title="{{ categorie.name }}">
-                            {{ categorie.name }}
-                        </a>
-                    </td>
-                    <td>IDK</td>
-                </tr>
-                {% endfor %}
+              {% for categorie in categories %}
+              <tr>
+                  <td>
+                      <a href="{{ path('categorie', {'id': categorie.id}) }}" title="{{ categorie.name }}">
+                          {{ categorie.name }}
+                      </a>
+                  </td>
+                  <td>
+                    {% set count = 0 %}
+
+                    {% for serie in series if serie.categorie == categorie %}
+
+                      {% set count = count + 1 %}
+
+                    {% endfor %}
+
+                    {{ count }}
+                  </td>
+              </tr>
+              {% endfor %}
             </tbody>
         </table>
       {% endif %}

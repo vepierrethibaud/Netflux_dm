@@ -42,6 +42,8 @@ class DefaultController extends AbstractController
 
         $categories = $em->getRepository(Categorie::class)->findAll();
 
+        $repositorySerie = $this->getDoctrine()->getRepository(Serie::class);
+
         return $this->render('default/index.html.twig', [
             'series' => $series,
             'categories' => $categories,
